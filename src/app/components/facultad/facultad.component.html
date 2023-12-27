@@ -1,7 +1,7 @@
 <div class="col">
   <div class="card mb-3">
     @if(logo !== null){
-      <img src="{facultad.logo}" class="card-img-top">
+      <img src="{logo}" class="card-img-top">
     }
     <div class="card-body">
       <h5 class="card-title">{{nombre}}</h5>
@@ -25,7 +25,11 @@
               </button>
             </div>
             <div class="col">
-              <a href="#" class="btn btn-outline-danger w-100 mb-2"><i class="fa-solid fa-trash"></i></a>
+              <button
+                class="btn btn-outline-danger w-100 mb-2"
+                data-bs-toggle="modal"
+                [attr.data-bs-target]="'#elimina'+formFacultadId"
+              ><i class="fa-solid fa-trash"></i></button>
             </div>
           </div>
         </div>
@@ -38,8 +42,17 @@
   </div>
   <!-- Modal -->
   <app-formulario
+    [pk]=pk
     [idForm]="formFacultadId"
     [funcion]="formFacultadFunction"
+    [nombre]="nombre"
+  />
+
+  <!-- Modal -->
+  <app-formulario
+    [pk]=pk
+    [idForm]="'elimina'+formFacultadId"
+    funcion="Eliminar"
     [nombre]="nombre"
   />
 </div>

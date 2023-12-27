@@ -17,6 +17,7 @@ export class FacultadComponent implements OnInit{
   @Input() descripcion:string | undefined;
 
   formFacultadId="";
+  confirmEliminaFac="";
   formFacultadFunction="Editar";
 
   ngOnInit(): void {
@@ -24,5 +25,4 @@ export class FacultadComponent implements OnInit{
       this.formFacultadId="editaFac"+this.pk;
     }
   }
-
 }

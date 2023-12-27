@@ -13,7 +13,7 @@ export class FormularioComponent implements OnInit{
 
 
   constructor(private universidadSrvice: UniversidadServiceProvider){}
-
+  @Input() pk:number;
   @Input() idForm:string;
   @Input() funcion:string;
   @Input() nombre:string | undefined;
@@ -40,4 +40,31 @@ export class FormularioComponent implements OnInit{
     }
   }
 
+  async editarFacultad(){
+    if(this.nuevoNombre!==""){
+      if(this.pk){
+        this.alerta = "Nuevo nombre "+this.nuevoNombre + " registrado con Exito";
+        this.alertTipe = "alert alert-success";
+        await this.universidadSrvice.editarFacultad(this.pk, this.nuevoNombre);
+      }else{
+        this.alerta = "Error inesperado campo PK Vacio";
+        this.alertTipe = "alert alert-danger";
+      }
+    }else{
+      this.alerta = "El campo nombre no puede ser Vacio";
+      this.alertTipe = "alert alert-danger";
+    }
+  }
+
+  async eliminarFacultad(){
+    if(this.pk){
+      this.alerta = "Facultad "+this.nuevoNombre + " eliminada con Exito";
+      this.alertTipe = "alert alert-success";
+      await this.universidadSrvice.eliminarFacultad(this.pk);
+      window.location.reload();
+    }else{
+      this.alerta = "Error inesperado campo PK Vacio";
+      this.alertTipe = "alert alert-danger";
+    }
+  }
 }

@@ -29,4 +29,27 @@ export class UniversidadServiceProvider{
 
     this.facultadesActualizadas.emit(await this.getFacultades());
   }
+
+  async editarFacultad(pk:number, nombre:string, logo?:string){
+    await fetch(`http://localhost:9000/facultades/actualizar/${pk}`,{
+      method:'PUT',
+      body:JSON.stringify({
+        nombre:nombre,
+        logo:logo
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+
+    this.facultadesActualizadas.emit(await this.getFacultades());
+  }
+
+  async eliminarFacultad(pk:number){
+    await fetch(`http://localhost:9000/facultades/eliminar/${pk}`,{
+      method:'DELETE',
+    });
+
+    this.facultadesActualizadas.emit(await this.getFacultades());
+  }
 }
