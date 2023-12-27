@@ -1,0 +1,45 @@
+<div class="col">
+  <div class="card mb-3">
+    @if(logo !== null){
+      <img src="{facultad.logo}" class="card-img-top">
+    }
+    <div class="card-body">
+      <h5 class="card-title">{{nombre}}</h5>
+      @if(descripcion!==undefined){
+        <p class="card-text">{{descripcion}}</p>
+      }@else{
+        <p class="card-text">Universidad de Nariño</p>
+      }
+      @if(user==="admin"){
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <a href="#" class="btn btn-outline-primary w-100 mb-2"><i class="fa-solid fa-list"></i></a>
+            </div>
+            <div class="col">
+              <button class="btn btn-outline-warning w-100 mb-2"
+              data-bs-toggle="modal"
+              [attr.data-bs-target]="'#'+formFacultadId"
+              >
+                <i class="fa-regular fa-pen-to-square"></i>
+              </button>
+            </div>
+            <div class="col">
+              <a href="#" class="btn btn-outline-danger w-100 mb-2"><i class="fa-solid fa-trash"></i></a>
+            </div>
+          </div>
+        </div>
+      }@else {
+        <div class="container">
+          <a href="#" class="btn btn-outline-primary w-100 mb-2"><i class="fa-solid fa-list"></i></a>
+        </div>
+      }
+    </div>
+  </div>
+  <!-- Modal -->
+  <app-formulario
+    [idForm]="formFacultadId"
+    [funcion]="formFacultadFunction"
+    [nombre]="nombre"
+  />
+</div>

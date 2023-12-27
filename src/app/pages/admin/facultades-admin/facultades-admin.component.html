@@ -1,0 +1,32 @@
+<section>
+  <div class="container text-center">
+
+    <div class="card mb-3">
+      <button type="button"
+        class="btn btn-success w-100"
+        data-bs-toggle="modal"
+        [attr.data-bs-target]="'#'+formFacultadId">
+        Añadir Facultad
+      </button>
+    </div>
+
+    @if (facultades.length > 0) {
+      <div class="row  row-cols-1 row-cols-md-2 row-cols-xxl-4">
+        @for (facultad of facultades; track $index) {
+          <app-facultad
+            [pk]=facultad.pk
+            user="admin"
+            [logo]="facultad.logo"
+            [nombre]="facultad.nombre"
+          />
+        }
+      </div>
+    }
+  </div>
+
+  <!-- Modal -->
+  <app-formulario
+    [idForm]="formFacultadId"
+    [funcion]="formFacultadFunction"
+  />
+</section>
