@@ -3,6 +3,8 @@ import { FacultadesUserComponent } from './pages/user/facultades-user/facultades
 import { FacultadesAdminComponent } from './pages/admin/facultades-admin/facultades-admin.component';
 import { ProgramasAdminComponent } from './pages/admin/programas-admin/programas-admin.component';
 import { SaberAdminComponent } from './pages/admin/saber-admin/saber-admin.component';
+import { ProgramasUserComponent } from './pages/user/programas-user/programas-user.component';
+import { SaberUserComponent } from './pages/user/saber-user/saber-user.component';
 
 export const routes: Routes = [
   {
@@ -20,5 +22,13 @@ export const routes: Routes = [
   {
     path:'user',
     component:FacultadesUserComponent
-  }
+  },
+  {
+    path:'user/programas/:facultad',
+    component:ProgramasUserComponent
+  },
+  {
+    path:'user/programas/:facultad/estudiantes/saber/:prueba',
+    component:SaberUserComponent
+  },
 ];

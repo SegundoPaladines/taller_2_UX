@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">
+     @if(fac !== undefined){
+      <small class="text-body-secondary">{{fac.nombre}} Seleccione un Programa</small>
+     }
+    </h1>
+  </div>
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <select
+          [(ngModel)]="programaPK"
+          [id]="'programasFacultad'+facPK"
+          class="form-select form-select-lg mb-3 border-2 border-black"
+          aria-label="selecProgramas"
+          (change)="actualizarLista()"
+        >
+          @for (programa of programas; track programa.pk) {
+            <option [value]="programa.pk">{{programa.nombre}}</option>
+          }
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    @if(programaPK !== undefined){
+      <app-estudiantes-user
+        [programaPk]="programaPK"
+      />
+    }
+  </div>
+
+<router-outlet />
