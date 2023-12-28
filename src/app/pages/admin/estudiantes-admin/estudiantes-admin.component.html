@@ -1,0 +1,82 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="text-center">Estudiantes</h3>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      @if (programaPk !== undefined) {
+        <select
+        [(ngModel)]="estudiantePK"
+        [id]="'estudiantePrograma'+programaPk"
+        class="form-select form-select-lg mb-3 border-2 border-black"
+        aria-label="selecProgramas"
+        (change)="actualizarIDForm()"
+      >
+        @for (estudiante of estudiantes; track estudiante.pk) {
+          <option [value]="estudiante.pk">{{estudiante.nombre}}</option>
+        }
+      </select>
+      }@else {
+        <p class="text-center">No hay ningun estudiante registrado</p>
+      }
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-outline-success w-100 mb-2"
+        data-bs-toggle="modal"
+        data-bs-target="#addNuevoEstudiante"
+        >Nuevo</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-outline-warning w-100 mb-2"
+        data-bs-toggle="modal"
+        [attr.data-bs-target]="'#edita'+idForm"
+        >
+         Editar
+        </button>
+      </div>
+      <div class="col">
+        <button
+          class="btn btn-outline-danger w-100 mb-2"
+          data-bs-toggle="modal"
+          [attr.data-bs-target]="'#elimina'+idForm"
+        >Eliminar</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <a
+          [routerLink]="'estudiantes/saber/'+estudiantePK"
+          class="btn btn-outline-primary w-100 mb-2 mt-2"
+        >
+          Ver Resultados de Aprendizaje
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-form-estudiantes
+  [pk]="estudiantePK"
+  [progPK]="programaPk"
+  idForm="addNuevoEstudiante"
+  funcion="Agregar"
+/>
+
+@for (estudiante of estudiantes; track estudiante.pk) {
+  <app-form-estudiantes
+    [pk]="estudiante.pk"
+    [progPK]="programaPk"
+    [idForm]="'edita'+estudiante.pk+'estudianteForm'"
+    funcion="Editar"
+  />
+
+  <app-form-estudiantes
+    [pk]="estudiante.pk"
+    [progPK]="programaPk"
+    [idForm]="'elimina'+estudiante.pk+'estudianteForm'"
+    funcion="Eliminar"
+  />
+}
+
+<router-outlet />

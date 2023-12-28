@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ProgFormComponent } from "../../../components/prog-form/prog-form.component";
 import { CommonModule } from '@angular/common';
 import { Facultad } from '../../../clases/facultad.model';
+import { EstudiantesAdminComponent } from "../estudiantes-admin/estudiantes-admin.component";
 
 @Component({
     selector: 'app-programas-admin',
@@ -13,7 +14,7 @@ import { Facultad } from '../../../clases/facultad.model';
     templateUrl: './programas-admin.component.html',
     styleUrl: './programas-admin.component.css',
     providers: [UniversidadServiceProvider],
-    imports: [CommonModule, FormsModule, RouterOutlet, RouterModule, ProgFormComponent]
+    imports: [CommonModule, FormsModule, RouterOutlet, RouterModule, ProgFormComponent, EstudiantesAdminComponent]
 })
 export class ProgramasAdminComponent implements OnInit{
 
@@ -42,6 +43,7 @@ export class ProgramasAdminComponent implements OnInit{
 
   actualizarLista(){
     this.idForm = this.programaPK+"FormPrograma";
+    this.universidadService.programaActualizado.emit(this.programaPK);
   }
 
 }

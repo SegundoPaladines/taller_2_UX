@@ -35,6 +35,7 @@ export class FormularioComponent implements OnInit{
       this.alertTipe = "alert alert-success";
       await this.universidadSrvice.agregarFacultad(this.nuevoNombre);
       this.nuevoNombre = "";
+      window.location.reload();
     }else{
       this.alerta = "El campo nombre no puede ser Vacio";
       this.alertTipe = "alert alert-danger";
@@ -47,6 +48,7 @@ export class FormularioComponent implements OnInit{
         this.alerta = "Nuevo nombre "+this.nuevoNombre + " registrado con Exito";
         this.alertTipe = "alert alert-success";
         await this.universidadSrvice.editarFacultad(this.pk, this.nuevoNombre);
+        window.location.reload();
       }else{
         this.alerta = "Error inesperado campo PK Vacio";
         this.alertTipe = "alert alert-danger";
