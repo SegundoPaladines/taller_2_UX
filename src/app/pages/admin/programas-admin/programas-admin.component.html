@@ -1,2 +1,78 @@
-<p>{{facPK}}</p>
-dwdsasa
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">
+     @if(fac !== undefined){
+      <small class="text-body-secondary">{{fac.nombre}} Seleccione un Programa</small>
+     }
+    </h1>
+  </div>
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <select
+          [(ngModel)]="programaPK"
+          [id]="'programasFacultad'+facPK"
+          class="form-select form-select-lg mb-3 border-2 border-black"
+          aria-label="selecProgramas"
+          (change)="actualizarLista()"
+        >
+          @for (programa of programas; track programa.pk) {
+            <option [value]="programa.pk">{{programa.nombre}}</option>
+          }
+        </select>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-outline-success w-100 mb-2"
+          data-bs-toggle="modal"
+          data-bs-target="#addNuevoPrograma"
+          >Nuevo</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-outline-warning w-100 mb-2"
+          data-bs-toggle="modal"
+          [attr.data-bs-target]="'#edita'+idForm"
+          >
+           Editar
+          </button>
+        </div>
+        <div class="col">
+          <button
+            class="btn btn-outline-danger w-100 mb-2"
+            data-bs-toggle="modal"
+            [attr.data-bs-target]="'#elimina'+idForm"
+          >Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    @if(programaPK !== undefined){
+      hola
+    }
+  </div>
+</div>
+
+<app-prog-form
+  [pk]="programaPK"
+  [facPK] = facPK
+  idForm="addNuevoPrograma"
+  funcion="Agregar"
+/>
+@for (programa of programas; track programa.pk) {
+  <app-prog-form
+    [pk]=programa.pk
+    [facPK] = facPK
+    [idForm]="'edita'+programa.pk+'FormPrograma'"
+    funcion="Editar"
+  />
+
+  <app-prog-form
+    [pk]=programa.pk
+    [facPK] = facPK
+    [idForm]="'elimina'+programa.pk+'FormPrograma'"
+    funcion="Eliminar"
+  />
+}
+
+<router-outlet />

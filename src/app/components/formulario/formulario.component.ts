@@ -7,12 +7,13 @@ import { UniversidadServiceProvider } from '../../services/univserisad.service';
   standalone: true,
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css',
-  imports: [FormsModule]
+  imports: [FormsModule],
+  providers:[UniversidadServiceProvider]
 })
 export class FormularioComponent implements OnInit{
 
-
   constructor(private universidadSrvice: UniversidadServiceProvider){}
+
   @Input() pk:number;
   @Input() idForm:string;
   @Input() funcion:string;

@@ -1,0 +1,77 @@
+<div class="modal fade" [id]="idForm" tabindex="-1" aria-labelledby="formLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="formLabel">{{funcion}} Programa</h1>
+      </div>
+      <div class="modal-body">
+        @if(alerta !== ""){
+          <div
+            [className]="alertTipe"
+            role="alert"
+          >
+            <p class="text-center">{{alerta}}</p>
+          </div>
+        }
+        <div class="mb-3 row">
+          @if(funcion !== "Eliminar"){
+            <label [for]="idForm +'input'" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                [id]="idForm +'input'"
+                class="form-control"
+                [(ngModel)]="nuevoNombre"
+                placeholder="Ingresa un Nombre"
+              >
+            </div>
+          }@else {
+            @if (programa !== undefined) {
+              <p>¿Está seguro de querer eliminar el programa  {{programa.nombre}} ?</p>
+            }
+          }
+        </div>
+      <div class="modal-footer">
+        @if(funcion === "Agregar"){
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >Cerrar</button>
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="agregarPrograma()"
+          >Agregar</button>
+        }
+        @if(funcion === "Editar"){
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >Cerrar</button>
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="editarPrograma()"
+          >Guardar Cambios</button>
+        }
+        @if(funcion === "Eliminar"){
+          <button
+            type="button"
+            class="btn btn-success"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >Cerrar</button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="eliminarPrograma()"
+          >Eliminar</button>
+        }
+      </div>
+    </div>
+  </div>
+</div>
