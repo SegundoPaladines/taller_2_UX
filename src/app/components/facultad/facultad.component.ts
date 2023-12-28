@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormularioComponent } from "../formulario/formulario.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-facultad',
     standalone: true,
     templateUrl: './facultad.component.html',
     styleUrl: './facultad.component.css',
-    imports: [FormularioComponent]
+    imports: [FormularioComponent, RouterModule]
 })
 export class FacultadComponent implements OnInit{
 

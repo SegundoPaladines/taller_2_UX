@@ -3,6 +3,10 @@
 ##
 
 ```bash
+sudo /opt/lampp/lampp startmysql
+```
+
+```bash
 cd Proyectos/Node/saber_pro_backend/
 ```
 
