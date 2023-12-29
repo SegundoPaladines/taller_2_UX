@@ -1,4 +1,27 @@
-<nav>
-  <h1>nav</h1>
-</nav>
+<div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">SRA Udenar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a routerLink="/admin" routerLinkActive="text-danger" class="nav-link">Admin</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/user"  routerLinkActive="text-danger" class="nav-link">User</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container p-lg-10">
+    <br />
+    <h2 class="mt-10 text-center p-5 text-body-secondary">Sistema de Monitoreo de Resultados de Aprendizaje de la Universidad de Nariño</h2>
+  </div>
+
+</div>
 <router-outlet />

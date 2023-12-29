@@ -1,0 +1,273 @@
+<!-- Modal -->
+<div class="modal fade modal-xl" [id]="idForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        @if(funcion == "Eliminar"){
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Registro</h1>
+        }@else {
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar Registro</h1>
+        }
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      @if(funcion == "Eliminar"){
+        @if(estudiante !== undefined && estudiante !== null){
+          <div class="modal-body">
+            <div class="row">
+              @if(alert !== ""){
+                <div [classList]="alertClass + ' pt-2'" role="alert">
+                  <p class="text-center"> {{alert}} </p>
+                </div>
+              }
+            </div>
+            <p class="text-center">
+              ¿Esta seguro de querer eliminar los registros de SaberPro y
+              SaberOnce del estudiante {{estudiante.nombre}}?
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="eliminarRegistros()"
+            >Eliminar</button>
+          </div>
+        }
+      }@else {
+        @if(estudiante !== undefined && estudiante !== null){
+          <div class="modal-body">
+            <h5 class="text-center">{{estudiante.nombre}}</h5>
+            <div class="container">
+              <div class="row">
+                @if(alert !== ""){
+                  <div [classList]="alertClass + ' pt-2'" role="alert">
+                    <p class="text-center"> {{alert}} </p>
+                  </div>
+                }
+              </div>
+              <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2">
+                <div class="col">
+                  <h5 class="text-center">Saber Pro</h5>
+                  <hr />
+                  <div class="input-group mb-3">
+                    <span
+                      class="input-group-text"
+                      id="input1sp">
+                      Lectura Crítica
+                    </span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="input1sp-input"
+                      [(ngModel)]="lectura_pro"
+                      aria-label="input1sp"
+                      aria-describedby="input1sp"
+                    >
+                    @if(lectura_pro === null){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo Requerido!
+                      </p>
+                    }
+                    @if(lectura_pro < 0){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo no Valido!
+                      </p>
+                    }
+                  </div>
+                  <div class="input-group mb-3">
+                    <span
+                      class="input-group-text"
+                      id="input2sp">
+                      Razonamiento Cuantitativo
+                    </span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      [(ngModel)]="razonamiento_pro"
+                      id="input2sp-input"
+                      aria-label="input2sp"
+                      aria-describedby="input2sp"
+                    >
+                    @if(razonamiento_pro === null){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo Requerido!
+                      </p>
+                    }
+                    @if(razonamiento_pro < 0){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo no Valido!
+                      </p>
+                    }
+                  </div>
+                  <div class="input-group mb-3">
+                    <span
+                      class="input-group-text"
+                      id="input3sp">
+                      Inglés
+                    </span>
+                    <input
+                      type="number"
+                      id="input3sp-input"
+                      [(ngModel)]="ingles_pro"
+                      class="form-control"
+                      aria-label="input3sp"
+                      aria-describedby="input3sp"
+                    >
+                    @if(ingles_pro === null){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo Requerido!
+                      </p>
+                    }
+                    @if(ingles_pro < 0){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo no Valido!
+                      </p>
+                    }
+                  </div>
+                  <div class="input-group mb-3">
+                    <span
+                      class="input-group-text"
+                      id="input4sp">
+                      Competencias Ciudadanas
+                    </span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      [(ngModel)]="ciudadanas_pro"
+                      id="input4sp-input"
+                      aria-label="input4sp"
+                      aria-describedby="input4sp"
+                    >
+                    @if(ciudadanas_pro === null){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo Requerido!
+                      </p>
+                    }
+                    @if(ciudadanas_pro < 0){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo no Valido!
+                      </p>
+                    }
+                  </div>
+                </div>
+                <div class="col">
+                  <h5 class="text-center">Saber 11</h5>
+                  <hr />
+                  <div class="input-group mb-3">
+                    <span
+                      class="input-group-text"
+                      id="input1so">
+                      Lectura Crítica
+                    </span>
+                    <input
+                      type="number"
+                      id="input1so-input"
+                      class="form-control"
+                      aria-label="input1so"
+                      [(ngModel)]="lectura_once"
+                      aria-describedby="input1so"
+                    >
+                    @if(lectura_once === null){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo Requerido!
+                      </p>
+                    }
+                    @if(lectura_once < 0){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo no Valido!
+                      </p>
+                    }
+                  </div>
+                  <div class="input-group mb-3">
+                    <span
+                      class="input-group-text"
+                      id="input2so">
+                      Razonamiento Cuantitativo
+                    </span>
+                    <input
+                      type="number"
+                      id="input2so-input"
+                      class="form-control"
+                      [(ngModel)]="razonamiento_once"
+                      aria-label="input2so"
+                      aria-describedby="input2so"
+                    >
+                    @if(razonamiento_once === null){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo Requerido!
+                      </p>
+                    }
+                    @if(razonamiento_once < 0){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo no Valido!
+                      </p>
+                    }
+                  </div>
+                  <div class="input-group mb-3">
+                    <span
+                      class="input-group-text"
+                      id="input3so">
+                      Inglés
+                    </span>
+                    <input
+                      type="number"
+                      id="input3so-input"
+                      class="form-control"
+                      [(ngModel)]="ingles_once"
+                      aria-label="input3so"
+                      aria-describedby="input3so"
+                    >
+                    @if(ingles_once === null){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo Requerido!
+                      </p>
+                    }
+                    @if(ingles_once < 0){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo no Valido!
+                      </p>
+                    }
+                  </div>
+                  <div class="input-group mb-3">
+                    <span
+                      class="input-group-text"
+                      id="input4so">
+                      Competencias Ciudadanas
+                    </span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="input4so-input"
+                      [(ngModel)]="ciudadanas_once"
+                      aria-label="input4so"
+                      aria-describedby="input4so"
+                    >
+                    @if(ciudadanas_once === null){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo Requerido!
+                      </p>
+                    }
+                    @if(ciudadanas_once < 0){
+                      <p class="alert alert-danger w-100 rounded p-1" role="alert">
+                        Campo no Valido!
+                      </p>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="actualizarRegistros()"
+            >Guardar Cambios</button>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</div>

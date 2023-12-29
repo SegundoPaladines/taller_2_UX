@@ -1,220 +1,269 @@
-@if(estudiante !== undefined){
-  <div class="container">
-    <table class="table table-responsive tabla">
-      <tr>
-        <td class="gris" width="20%">
-          Id del programa:
-        </td>
-        <td width="10%">
-          @if(programa !== undefined){
-            {{programa.pk}}
-          }
-        </td>
-        <td class="gris" colspan="3" width="35%">
-          Nombre del programa:
-        </td>
-        <td colspan="2" width="35%">
-          @if(programa !== undefined){
-            {{programa.nombre}}
-          }
-        </td>
-      </tr>
-      <tr>
-        <td class="gris">
-          Id del estudiante:
-        </td>
-        <td>
-          {{estudiantePk}}
-        </td>
-        <td class="gris" colspan="3">
-          Nombre del estudiante:
-        </td>
-        <td colspan="2">
-          {{estudiante.nombre}}
-        </td>
-      </tr>
-      <tr>
-        <td class="gris text-center justify-content-between" colspan="2">
-          <p class="title mb-1">Competencia</p>
-        </td>
-        <td class="azul text-center justify-content-between pt-1">
-          <p class="title mb-1">Saber Pro</p>
-        </td>
-        <td class="azul text-center justify-content-between pt-1">
-          <p class="title mb-1">%Saber Pro</p>
-        </td>
-        <td class="rosa text-center justify-content-between pt-1">
-          <p class="title mb-1">Saber 11</p>
-        </td>
-        <td class="rosa text-center justify-content-between pt-1" width="15%">
-          <p class="title mb-1">%Saber 11</p>
-        </td>
-        <td class="morado text-center justify-content-between">
-          <p class="title">%Variación = %Saber Pro -
-            %Saber 11
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td class="text-center" colspan="2">Lectura Critica</td>
-        <td class="text-end">
-          @if(saberPro !== undefined){
-            {{saberPro.lectura_critica}}
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberPro !== undefined){
-            {{(saberPro.lectura_critica/80)*100}}%
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberOnce !== undefined){
-            {{saberOnce.lectura_critica}}
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberOnce !== undefined){
-            {{(saberOnce.lectura_critica/100)*100}}%
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberPro !== undefined && saberOnce !== undefined){
-            {{(saberPro.lectura_critica/80)*100 - (saberOnce.lectura_critica/100)*100}}%
-          }@else {
-            <p>N/A</p>
-          }
-        </td>
-      </tr>
-      <tr>
-        <td class="text-center" colspan="2">Razonamiento cuantitativo </td>
-        <td class="text-end">
-          @if(saberPro !== undefined){
-            {{saberPro.razonamiento_cuantitativo}}
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberPro !== undefined){
-            {{(saberPro.razonamiento_cuantitativo/80)*100}}%
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberOnce !== undefined){
-            {{saberOnce.razonamiento_cuantitativo}}
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberOnce !== undefined){
-            {{(saberOnce.razonamiento_cuantitativo/100)*100}}%
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberPro !== undefined && saberOnce !== undefined){
-            {{(saberPro.razonamiento_cuantitativo/80)*100 - (saberOnce.razonamiento_cuantitativo/100)*100}}%
-          }@else {
-            <p>N/A</p>
-          }
-        </td>
-      </tr>
-      <tr>
-        <td class="text-center" colspan="2">Inglés</td>
-        <td class="text-end">
-          @if(saberPro !== undefined){
-            {{saberPro.ingles}}
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberPro !== undefined){
-            {{(saberPro.ingles/80)*100}}%
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberOnce !== undefined){
-            {{saberOnce.ingles}}
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberOnce !== undefined){
-            {{(saberOnce.ingles/100)*100}}%
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberPro !== undefined && saberOnce !== undefined){
-            {{(saberPro.ingles/80)*100 - (saberOnce.ingles/100)*100}}%
-          }@else {
-            <p>N/A</p>
-          }
-        </td>
-      </tr>
-      <tr>
-        <td class="text-center" colspan="2">Competencias ciudadanas</td>
-        <td class="text-end">
-          @if(saberPro !== undefined){
-            {{saberPro.competencias_ciudadanas}}
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberPro !== undefined){
-            {{(saberPro.competencias_ciudadanas/80)*100}}%
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberOnce !== undefined){
-            {{saberOnce.competencias_ciudadanas}}
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberOnce !== undefined){
-            {{(saberOnce.competencias_ciudadanas/100)*100}}%
-          }@else {
-            <p>No hay Registros</p>
-          }
-        </td>
-        <td class="text-end">
-          @if(saberPro !== undefined && saberOnce !== undefined){
-            {{(saberPro.competencias_ciudadanas/80)*100 - (saberOnce.competencias_ciudadanas/100)*100}}%
-          }@else {
-            <p>N/A</p>
-          }
-        </td>
-      </tr>
-    </table>
+<div class="container">
+  <div class="row">
+    @if(estudiante !== undefined){
+      <div class="container">
+        <table class="table table-responsive tabla">
+          <tr>
+            <td class="gris" width="20%">
+              Id del programa:
+            </td>
+            <td width="10%">
+              @if(programa !== undefined){
+                {{programa.pk}}
+              }
+            </td>
+            <td class="gris" colspan="3" width="35%">
+              Nombre del programa:
+            </td>
+            <td colspan="2" width="35%">
+              @if(programa !== undefined){
+                {{programa.nombre}}
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="gris">
+              Id del estudiante:
+            </td>
+            <td>
+              {{estudiantePk}}
+            </td>
+            <td class="gris" colspan="3">
+              Nombre del estudiante:
+            </td>
+            <td colspan="2">
+              {{estudiante.nombre}}
+            </td>
+          </tr>
+          <tr>
+            <td class="gris text-center justify-content-between" colspan="2">
+              <p class="title mb-1">Competencia</p>
+            </td>
+            <td class="azul text-center justify-content-between pt-1">
+              <p class="title mb-1">Saber Pro</p>
+            </td>
+            <td class="azul text-center justify-content-between pt-1">
+              <p class="title mb-1">%Saber Pro</p>
+            </td>
+            <td class="rosa text-center justify-content-between pt-1">
+              <p class="title mb-1">Saber 11</p>
+            </td>
+            <td class="rosa text-center justify-content-between pt-1" width="15%">
+              <p class="title mb-1">%Saber 11</p>
+            </td>
+            <td class="morado text-center justify-content-between">
+              <p class="title">%Variación = %Saber Pro -
+                %Saber 11
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center" colspan="2">Lectura Critica</td>
+            <td class="text-end">
+              @if(saberPro !== undefined){
+                {{saberPro.lectura_critica}}
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberPro !== undefined){
+                {{redondearN((saberPro.lectura_critica/80)*100)}}%
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberOnce !== undefined){
+                {{saberOnce.lectura_critica}}
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberOnce !== undefined){
+                {{redondearN((saberOnce.lectura_critica/100)*100)}}%
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberPro !== undefined && saberOnce !== undefined){
+                <span [classList]="class_lc">
+                  {{redondearN((saberPro.lectura_critica/80)*100 - (saberOnce.lectura_critica/100)*100)}}%
+                </span>
+              }@else {
+                <p>N/A</p>
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center" colspan="2">Razonamiento cuantitativo </td>
+            <td class="text-end">
+              @if(saberPro !== undefined){
+                {{saberPro.razonamiento_cuantitativo}}
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberPro !== undefined){
+                {{redondearN((saberPro.razonamiento_cuantitativo/80)*100)}}%
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberOnce !== undefined){
+                {{saberOnce.razonamiento_cuantitativo}}
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberOnce !== undefined){
+                {{redondearN((saberOnce.razonamiento_cuantitativo/100)*100)}}%
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberPro !== undefined && saberOnce !== undefined){
+                <p [classList]="class_rc">
+                  {{redondearN((saberPro.razonamiento_cuantitativo/80)*100 - (saberOnce.razonamiento_cuantitativo/100)*100)}}%
+                </p>
+              }@else {
+                <p>N/A</p>
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center" colspan="2">Inglés</td>
+            <td class="text-end">
+              @if(saberPro !== undefined){
+                {{saberPro.ingles}}
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberPro !== undefined){
+                {{redondearN((saberPro.ingles/80)*100)}}%
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberOnce !== undefined){
+                {{saberOnce.ingles}}
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberOnce !== undefined){
+                {{redondearN((saberOnce.ingles/100)*100)}}%
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberPro !== undefined && saberOnce !== undefined){
+                <p [classList]="class_ig">
+                  {{redondearN((saberPro.ingles/80)*100 - (saberOnce.ingles/100)*100)}}%
+                </p>
+              }@else {
+                <p>N/A</p>
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center" colspan="2">Competencias ciudadanas</td>
+            <td class="text-end">
+              @if(saberPro !== undefined){
+                {{saberPro.competencias_ciudadanas}}
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberPro !== undefined){
+                {{redondearN((saberPro.competencias_ciudadanas/80)*100)}}%
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberOnce !== undefined){
+                {{saberOnce.competencias_ciudadanas}}
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberOnce !== undefined){
+                {{redondearN((saberOnce.competencias_ciudadanas/100)*100)}}%
+              }@else {
+                <p>No hay Registros</p>
+              }
+            </td>
+            <td class="text-end">
+              @if(saberPro !== undefined && saberOnce !== undefined){
+                <p [classList]="class_cc">
+                  {{redondearN((saberPro.competencias_ciudadanas/80)*100 - (saberOnce.competencias_ciudadanas/100)*100)}}%
+                </p>
+              }@else {
+                <p>N/A</p>
+              }
+            </td>
+          </tr>
+        </table>
+      </div>
+    }@else{
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <p>Estudiante no Encontrado, Corrija la Ruta</p>
+          </div>
+        </div>
+      </div>
+    }
   </div>
-}@else{
-  <div class="container">
-    <div class="card">
-      <div class="card-body">
-        <p>Estudiante no Encontrado, Corrija la Ruta</p>
+
+  @if(estudiantePk !== undefined){
+    <div class="row">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <button
+              class="btn btn-outline-warning w-100 mb-2"
+              data-bs-toggle="modal"
+              data-bs-target="#edit"
+            >
+              Editar
+            </button>
+          </div>
+          <div class="col">
+            <button
+              class="btn btn-outline-danger w-100 mb-2"
+              data-bs-toggle="modal"
+              data-bs-target="#delete"
+            >Eliminar</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-}
+
+    <app-saber-form
+      idForm="edit"
+      funcion="Editar"
+      [pk]="estudiantePk"
+    />
+    <app-saber-form
+      idForm="delete"
+      funcion="Eliminar"
+      [pk]="estudiantePk"
+    />
+  }
+
+</div>
