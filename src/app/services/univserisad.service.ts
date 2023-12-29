@@ -57,6 +57,27 @@ export class UniversidadServiceProvider{
     return est;
   }
 
+  async getSaberProEst(pk:number){
+    const res = await fetch(`http://localhost:9000/saber/pro/buscar/estudiante/${pk}`);
+    const saberPro = await res.json();
+
+    if(saberPro === null){
+      return undefined;
+    }
+
+    return saberPro;
+  }
+
+  async getSaberOnceEst(pk:number){
+    const res = await fetch(`http://localhost:9000/saber/once/buscar/estudiante/${pk}`);
+    const saberOnce = await res.json();
+
+    if(saberOnce === null){
+      return undefined;
+    }
+    return saberOnce;
+  }
+
   async agregarFacultad(nombre:string, logo?:string){
     await fetch('http://localhost:9000/facultades/crear',{
       method:'POST',

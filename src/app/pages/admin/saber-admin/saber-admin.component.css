@@ -1,0 +1,28 @@
+.tabla td{
+  border: solid 1px black;
+  padding-right: 10px;
+  padding-left: 4px;
+}
+
+.tabla .gris{
+  background-color: rgba(145, 120, 120, 0.5);
+}
+
+.tabla .azul{
+  background-color: rgba(150, 178, 255, 0.774);
+}
+
+.tabla .rosa{
+  background-color: rgba(207, 100, 118, 0.616);
+}
+
+.tabla .morado{
+  background-color: rgba(61, 47, 122, 0.616);
+}
+
+.title{
+  background-color: rgba(126, 120, 145, 0);
+  font-style: italic;
+  font-weight: bold;
+  font-size: 18px;
+}
